@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiPhox Health - Scroll to section task</title>
+    <style>
+        .container {
+            width: 300px;
+        }
+
+        h2 {
+            margin-top: 16px;
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .menu {
+            position: fixed;
+            left: 350px;
+            top: 20px;
+            border-radius: 6px;
+            border: 2px solid green;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react?dev",
+            "react-dom/client": "https://esm.sh/react-dom/client?dev"
+        }
+    }
+</script>
+<script type="text/babel" data-type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    const Component = () => {
+        return (
+            <div className="container">
+                <div className="menu">
+                    <ScrollButton id="section1">Section 1</ScrollButton>
+                    <ScrollButton id="section2">Section 2</ScrollButton>
+                    <ScrollButton id="section3">Section 3</ScrollButton>
+                    <ScrollButton id="section4">Section 4</ScrollButton>
+                </div>
+                <h1>Page Title</h1>
+                <h2 id="section1">Section 1</h2>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <h2 id="section2">Section 2</h2>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <h2 id="section3">Section 3</h2>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <h2 id="section4">Section 4</h2>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+        )
+    }
+
+    const ScrollButton = ({id, children}) => {
+        const scrollToSection = () => {
+            const section = document.getElementById(id);
+                if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        };
+        return <button onClick={scrollToSection}>{children}</button>;
+    }
+
+    const root = createRoot(document.getElementById('app'));
+    root.render(
+        <Component />
+    );
+</script>
+</html>
